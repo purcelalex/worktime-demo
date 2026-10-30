@@ -92,3 +92,12 @@ Windows 11, Node 24.21, npm 11.19, Vitest 4.1.12 with `@cloudflare/vitest-plugin
 - Private repository created locally (commit `f8c7bf1`, 107 files): the scan of staged files, of the history (about 11,900 added lines) and the exact-match check against this machine's demo credentials were clean.
 - Public export built from the allowlist (97 files, 441 KB, fresh history): scan clean; `npm ci`, `tsc -b` and 83 API and unit tests pass inside the export on its own; no personal e-mail, Cloudflare account id or production database id in it; no references to private documents.
 - Nothing has been pushed to GitHub at this point.
+
+## 2026-10-30: GitHub publication
+
+- Published with GitHub Desktop: private `purcelalex/worktime-app` (`main`, one commit; 404 without login) and public `purcelalex/worktime-demo` (renamed from `worktime-demo-export`; 301 redirect from the old name).
+- Public repository verified from outside by cloning it into a scratch folder: 97 files, 1 commit (`fbd6434`) identical to the local export; no private documents, secrets, credentials, hashes, production database id or custom-domain route; the secret scan (files and history, with exact-match of this machine's demo credentials) was clean.
+- Public `main` is protected by the ruleset `protect-main`: the public API reports the active rules `deletion` and `non_fast_forward` (no force push, no deletion).
+- Private `worktime-app`: the ruleset exists, but GitHub states it is not enforced on a private repository without a paid team plan. Accepted: single user, local copy, no force pushes by policy.
+- Dependabot alerts, Dependabot security updates, dependency graph, Secret Protection and Push protection were On in the settings page the author reviewed. The settings of each repository are not visible from outside, so they are confirmed by the author's screenshots only.
+- Rule for Dependabot pull requests on the public repository: do not merge them there; update the dependency in the private repository and re-export.

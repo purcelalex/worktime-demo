@@ -59,5 +59,6 @@ These steps create cloud resources and change DNS, so they are done only with th
 1. Turn on two-factor authentication for the GitHub account and keep the recovery codes offline.
 2. Create `worktime-app` as **Private** and `worktime-demo` as **Public**, both **empty** (no README, no .gitignore, no license).
 3. In each repository: Settings, Code security: turn on Dependabot alerts, Dependabot security updates, Secret scanning and Push protection.
-4. In each repository: Settings, Rules, Rulesets: block deletion and force pushes on `main` (plain pushes stay allowed).
-5. Check collaborators, deploy keys, webhooks and authorized apps; the private repository should have no collaborators.
+4. In each repository: Settings, Rules, Rulesets, New branch ruleset `protect-main`: Active, include the default branch, Restrict deletions and Block force pushes (do not require pull requests). On a free account the ruleset is enforced on the public repository only; GitHub shows a banner on private ones and does not enforce it there.
+5. Do not click "Create dependabot.yml" or the advanced CodeQL setup in the GitHub pages: they commit files on GitHub and the local copies diverge. Do not merge Dependabot pull requests on the public repository; update dependencies in the private repository and run the export again.
+6. Check collaborators, deploy keys, webhooks and authorized apps; the private repository should have no collaborators.
