@@ -1,0 +1,130 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/onest';
+
+/* Design tokens: the green and white identity shared with Expenses Manager. */
+@theme {
+  /* Leaf: the brand green. Fills, bars, icons, the running-timer accent. Not for text. */
+  --color-brand: #7bb661;
+  /* Dark leaf: green text and buttons with white text (contrast 4.9:1). */
+  --color-brand-ink: #3d7f2e;
+  --color-brand-strong: #2f6a24;
+  --color-brand-tint: #e8f3e2;
+  /* Amber: a very long running timer. Text uses warn-ink. */
+  --color-warn: #d98a00;
+  --color-warn-ink: #8f5200;
+  /* Red: errors only. */
+  --color-danger: #c0392b;
+  /* Darker red for hover and pressed states (never lighten a button with opacity: it breaks contrast). */
+  --color-danger-strong: #a93226;
+  /* Ink: main text, black with a hint of green. */
+  --color-ink: #1f2a24;
+  /* Readable grey for secondary text. */
+  --color-neutral: #5f6b64;
+  --color-surface: #f3f5f1;
+  --color-line: #dfe5dc;
+  --font-sans: 'Onest Variable', Arial, Helvetica, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  font-family: var(--font-sans);
+  /* Equal-width digits: durations line up and do not jump. */
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink);
+  background-color: #ffffff;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html,
+body {
+  /* Never let a stray wide element pan the page sideways. */
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  background-color: #ffffff;
+}
+
+/* iOS Safari zooms into fields under 16px. Keep fields at 16px on touch screens. */
+@media (max-width: 1023px), (pointer: coarse) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Visible keyboard focus everywhere. */
+:focus-visible {
+  outline: 3px solid var(--color-brand-ink);
+  outline-offset: 2px;
+  border-radius: 0.375rem;
+}
+
+@keyframes value-flash {
+  0% {
+    background-color: rgb(123 182 97 / 0.45);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+.value-flash {
+  animation: value-flash 1.2s ease-out;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(1.5rem);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+dialog[open] {
+  animation: sheet-in 0.18s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .value-flash,
+  .pulse-dot,
+  dialog[open] {
+    animation: none;
+  }
+}
+
+/* Landing page: a calm presentation, as in Expenses Manager. The gradients are decorative. */
+.landing-page {
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 84% 4%, rgb(171 222 145 / 0.42) 0, rgb(171 222 145 / 0) 25rem),
+    radial-gradient(circle at 8% 28rem, rgb(221 243 211 / 0.72) 0, rgb(221 243 211 / 0) 28rem),
+    linear-gradient(145deg, #fbfdfb 0%, #f2f8ef 34%, #ffffff 70%),
+    #f7faf6;
+}

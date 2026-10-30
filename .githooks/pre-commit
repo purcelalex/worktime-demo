@@ -1,0 +1,4 @@
+#!/bin/sh
+# Blocks a commit when staged files contain secrets or must-not-publish files.
+# Enable once per clone:  git config core.hooksPath .githooks
+exec node node_modules/tsx/dist/cli.mjs scripts/scan-secrets.ts --staged

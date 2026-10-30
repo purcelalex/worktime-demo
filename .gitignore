@@ -1,0 +1,32 @@
+# Dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Secrets and local state: never commit
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+.env
+.env.*
+!.env.example
+secrets/
+.wrangler/
+*.generated.sql
+
+# Test output
+playwright-report/
+test-results/
+coverage/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local AI tooling
+.claude/
+
+# Assignment screenshots: kept locally, never committed
+context-img/

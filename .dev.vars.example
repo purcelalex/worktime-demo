@@ -1,0 +1,2 @@
+# Phase 1 needs no secrets. Later phases (magic link email, Super Admin bootstrap)
+# will list their variables here, with empty values. Never commit a real .dev.vars.
